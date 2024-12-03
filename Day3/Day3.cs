@@ -28,6 +28,37 @@ public class Day3() : SolutionBase("Day3")
 
     public override string Part2(bool isExample = false)
     {
-        return "Part 2";
+        var lines = isExample ? ExampleLines : InputLines;
+
+        var mulDoOrDontRegex = new Regex(@"mul\(\d+,\d+\)|do\(\)|don't\(\)");
+        var numRegex = new Regex(@"\d+");
+
+        var mulDoOrDontMatches = lines.Where(line => !string.IsNullOrEmpty(line)).Select(line => mulDoOrDontRegex.Matches(line));
+
+        var total = 0;
+        var doing = true;
+
+        foreach (var matches in mulDoOrDontMatches)
+        {
+            foreach (var match in matches)
+            {
+                if (match.ToString() == "do()")
+                {
+                    doing = true;
+                }
+                else if (match.ToString() == "don't()")
+                {
+                    doing = false;
+                }
+                else if (doing)
+                {
+                    var numbers = numRegex.Matches(match.ToString()!).ToList().Select(m => int.Parse( m.Value)).ToList();
+                    total += numbers[0] * numbers[1];
+                }
+            }
+        }
+
+
+        return total.ToString();
     }
 }
