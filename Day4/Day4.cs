@@ -22,7 +22,6 @@ public class Day4() : SolutionBase("Day4")
         var rightAndDownDiagonalLines = GetAllDiagonalLines(lines, UpDownDirection.Down, LeftRightDirection.Right);
         totalOccurrencesOfXmas += GetCountOfOccurrencesOfXmasInString(rightAndDownDiagonalLines);
 
-
         //right and up diagonal check - example has 4
         var rightAndUpDiagonalLines = GetAllDiagonalLines(lines, UpDownDirection.Up, LeftRightDirection.Right);
         totalOccurrencesOfXmas += GetCountOfOccurrencesOfXmasInString(rightAndUpDiagonalLines);
