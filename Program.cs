@@ -1,6 +1,6 @@
-﻿using AdventOfCode2024.Day7;
+﻿using AdventOfCode2024.Day8;
 
-var day = new Day7();
+var day = new Day8();
 
 var part1 = day.Part1();
 Console.WriteLine(part1);
